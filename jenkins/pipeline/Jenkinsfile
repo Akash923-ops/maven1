@@ -1,0 +1,35 @@
+      pipeline{
+        agent any
+stages{
+stage('build'){
+  steps{
+ sh '''
+#!/bin/bash
+pwd
+ls -lrt
+sleep 5
+'''
+}
+}
+ stage('test-windows'){
+steps{
+sh """
+#!/bin/bash
+pwd
+ls -lrt
+sleep 5
+"""
+}
+}
+ stage('test-linux'){
+steps{
+sh 'sleep 5'
+}
+}
+  stage('deploy'){
+steps{
+ sh 'sleep 5'
+}
+}
+}
+}
