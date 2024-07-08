@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    stages{
+                stage('code-checkout with git'){
+steps{
+   git branch: 'main', credentialsId: 'git-id', url: 'https://github.com/Akash923-ops/my-devops-2024.git'
+            
+        }
+        }
+        stage('check-file with-git'){
+            steps{
+                sh 'ls -lrt'
+            }
+        }
+        
+        stage('code-checkout with checkout'){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-id', url: 'https://github.com/Akash923-ops/my-devops-2024.git']])
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'ls -lrt'
+            }
+        }
+    }
+}
