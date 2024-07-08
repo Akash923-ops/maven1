@@ -1,0 +1,16 @@
+pipeline{
+agent any
+stages{
+stage('code-checkout'){
+steps{
+   git branch: 'main', credentialsId: 'git-id', url: 'https://github.com/Akash923-ops/my-devops-2024.git'
+}
+}
+
+stage('build'){
+steps{
+sh 'ls -lrt'
+}
+}
+}
+}
